@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verandah Properties — Our Approach to Repairs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#008C82;
+    --teal-deep:#066b63;
+    --gold:#D4AF50;
+    --gold-soft:#e9d9a8;
+    --charcoal:#1A1A1A;
+    --ink:#34322d;
+    --muted:#6c6a63;
+    --paper:#FBFAF7;
+    --soft:#f2efe7;
+    --line:#e6e1d6;
+    --warn:#b06a3a;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--soft);
+    color:var(--ink);
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding:36px 16px;
+  }
+  .sheet{
+    max-width:840px;margin:0 auto;background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:0 22px 60px rgba(26,26,26,.10);
+    overflow:hidden;
+  }
+
+  /* Masthead */
+  .masthead{
+    background:var(--charcoal);color:#fff;padding:26px 48px 24px;position:relative;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;
+  }
+  .masthead::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+    background:linear-gradient(90deg,var(--teal) 0%,var(--teal) 62%,var(--gold) 62%,var(--gold) 100%);
+  }
+  .brand{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:27px;letter-spacing:.5px;line-height:1;}
+  .brand .pm{color:var(--gold);}
+  .tagline{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#bdbbB4;font-weight:300;text-align:right;}
+
+  /* Hero */
+  .hero{padding:48px 48px 36px;border-bottom:1px solid var(--line);}
+  .eyebrow{
+    font-size:11px;letter-spacing:3.5px;text-transform:uppercase;color:var(--teal-deep);font-weight:500;
+    display:flex;align-items:center;gap:11px;
+  }
+  .eyebrow::before{content:"";width:30px;height:2px;background:var(--gold);display:inline-block;}
+  h1{
+    font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--charcoal);
+    font-size:46px;line-height:1.04;margin:16px 0 16px;letter-spacing:.2px;
+  }
+  .hero .lede{font-size:16.5px;color:var(--muted);max-width:60ch;margin:0;}
+  .hero .lede b{color:var(--ink);font-weight:500;}
+
+  /* Section scaffolding */
+  section{padding:40px 48px;border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .kicker{
+    font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px;
+  }
+  h2{
+    font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--teal-deep);
+    font-size:31px;line-height:1.1;margin:0 0 14px;letter-spacing:.3px;
+  }
+  p{margin:0 0 16px;font-size:15.5px;}
+  p:last-child{margin-bottom:0;}
+  .intro{color:var(--muted);font-size:16px;}
+
+  /* The trap — cascade */
+  .cascade{margin:26px 0 22px;position:relative;}
+  .step{
+    position:relative;display:flex;gap:18px;align-items:flex-start;
+    padding:0 0 22px 0;
+  }
+  .step:last-child{padding-bottom:0;}
+  .step::before{
+    content:"";position:absolute;left:15px;top:34px;bottom:-4px;width:2px;
+    background:linear-gradient(var(--gold-soft),var(--gold-soft));
+  }
+  .step:last-child::before{display:none;}
+  .dot{
+    flex:0 0 32px;height:32px;border-radius:50%;background:#fff;border:2px solid var(--gold);
+    color:var(--teal-deep);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;
+    display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+  }
+  .step .body{padding-top:3px;}
+  .step .body strong{color:var(--charcoal);font-weight:600;}
+  .step .body span{display:block;font-size:15px;color:var(--ink);}
+
+  .verdict{
+    margin-top:8px;border-left:4px solid var(--warn);background:#fff;
+    padding:16px 20px;font-size:16px;color:var(--charcoal);
+  }
+  .verdict b{font-weight:600;}
+
+  /* Filter questions */
+  .filter{
+    display:flex;gap:14px;flex-wrap:wrap;margin:22px 0 18px;
+  }
+  .qcard{
+    flex:1 1 200px;background:#fff;border:1px solid var(--line);
+    border-top:3px solid var(--teal);padding:18px 20px;
+  }
+  .qcard .q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--teal-deep);line-height:1.25;}
+  .batch{
+    background:var(--charcoal);color:#eceae4;padding:18px 22px;font-size:15px;margin-top:4px;
+  }
+  .batch b{color:#fff;font-weight:600;}
+
+  /* Guardrails */
+  .rail{
+    display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line);
+  }
+  .rail:first-of-type{border-top:none;padding-top:6px;}
+  .rail .mark{
+    flex:0 0 44px;height:44px;border-radius:50%;
+    background:var(--soft);border:1px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--teal-deep);font-size:20px;
+  }
+  .rail h3{
+    font-family:'Jost',sans-serif;font-weight:600;font-size:16px;color:var(--charcoal);
+    margin:6px 0 5px;letter-spacing:.2px;
+  }
+  .rail p{font-size:14.5px;color:var(--ink);margin:0;}
+
+  /* Close */
+  .close{background:var(--charcoal);color:#f0eee8;text-align:center;padding:44px 48px;}
+  .close .kicker{color:var(--gold);}
+  .close blockquote{
+    font-family:'Cormorant Garamond',serif;font-weight:500;font-size:28px;line-height:1.3;
+    color:#fff;margin:6px auto 0;max-width:30ch;
+  }
+  .close blockquote .g{color:var(--gold-soft);font-style:italic;}
+
+  footer{
+    padding:18px 48px 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:#9a988f;background:var(--paper);
+  }
+  footer .g{color:var(--teal-deep);font-weight:500;}
+
+  @media print{
+    body{background:#fff;padding:0;}
+    .sheet{box-shadow:none;border:none;max-width:none;}
+  }
+  @media(max-width:620px){
+    .masthead,.hero,section,.close,footer{padding-left:24px;padding-right:24px;}
+    h1{font-size:34px;}
+    h2{font-size:26px;}
+    .tagline{text-align:left;}
+    .close blockquote{font-size:23px;}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="brand">Verandah <span class="pm">Properties</span></div>
+    <div class="tagline">Curating Lake Nona's<br>Finest Rental Portfolio</div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Our Maintenance Philosophy</div>
+    <h1>Why we don't set a dollar limit on your repairs</h1>
+    <p class="lede">It can sound counterintuitive at first. But a fixed approval threshold quietly works <b>against</b> you — and the way we handle repairs instead is built to protect both your investment and your peace of mind. Here's the thinking, and the guardrails behind it.</p>
+  </div>
+
+  <section>
+    <div class="kicker">The Problem With a Hard Number</div>
+    <h2>The rigid-number trap</h2>
+    <p class="intro">Picture the chain reaction an arbitrary dollar limit sets off:</p>
+    <div class="cascade">
+      <div class="step">
+        <div class="dot">1</div>
+        <div class="body"><span><strong>The vendor is standing in your property</strong> — and your tenant took time off work to be there for the appointment.</span></div>
+      </div>
+      <div class="step">
+        <div class="dot">2</div>
+        <div class="body"><span>The repair comes in <strong>just over an arbitrary limit</strong>, so the work has to pause for approval.</span></div>
+      </div>
+      <div class="step">
+        <div class="dot">3</div>
+        <div class="body"><span>We can't reach you — or the vendor can't reach us — <strong>within the next five minutes</strong>. Time is money to a vendor, and they won't wait.</span></div>
+      </div>
+      <div class="step">
+        <div class="dot">4</div>
+        <div class="body"><span>The vendor leaves, and <strong>still bills a trip charge</strong> for showing up.</span></div>
+      </div>
+      <div class="step">
+        <div class="dot">5</div>
+        <div class="body"><span>The tenant is frustrated after making the appointment, and the <strong>same repair now costs more</strong> than the small difference that triggered the call.</span></div>
+      </div>
+    </div>
+    <div class="verdict"><b>A rigid number doesn't protect you — it quietly costs you more.</b></div>
+  </section>
+
+  <section>
+    <div class="kicker">What We Do Instead</div>
+    <h2>Judgment, with clear guardrails</h2>
+    <p>We don't just open work orders. Every request is analyzed <em>before</em> anyone is dispatched — so the question is never simply "how much," but whether the work should happen at all:</p>
+    <div class="filter">
+      <div class="qcard"><div class="q">Is it urgent?</div></div>
+      <div class="qcard"><div class="q">Is it a liability risk?</div></div>
+      <div class="qcard"><div class="q">Is it actually the tenant's responsibility?</div></div>
+    </div>
+    <div class="batch"><b>Nothing falls through the cracks.</b> Minor items that don't justify a vendor trip are logged and batched into a future, more substantial work order — so we're deliberate with your money, and nothing is wasted or forgotten.</div>
+  </section>
+
+  <section>
+    <div class="kicker">Your Protection</div>
+    <h2>The guardrails that keep this in check</h2>
+    <div class="rail">
+      <div class="mark">A</div>
+      <div>
+        <h3>Large-scale repairs always come to you</h3>
+        <p>Roof, full flooring, appliance or HVAC replacement, major exterior work — these always come to you first, with a quote (or quotes) and options. We proceed only on your authorization.</p>
+      </div>
+    </div>
+    <div class="rail">
+      <div class="mark">B</div>
+      <div>
+        <h3>The financial-sense backstop</h3>
+        <p>If a repair simply doesn't make financial sense — even with the vendor already at the property — say a unit needs replacing rather than repairing, that stops the work on its own. We bring the replacement decision to you, to make together.</p>
+      </div>
+    </div>
+    <div class="rail">
+      <div class="mark">C</div>
+      <div>
+        <h3>Your 30-day right to terminate, anytime</h3>
+        <p>The latitude lets us do our job well in the moment. This ensures it's never abused — if you ever feel we aren't working in your best interest, you're free to part ways on 30 days' notice.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="close">
+    <div class="kicker">The Bottom Line</div>
+    <blockquote>Our interests are aligned. <span class="g">Your property performing well is how we succeed.</span></blockquote>
+  </div>
+
+  <footer>
+    <span>Verandah Properties, LLC</span>
+    <span class="g">The marriage, not the sprint.</span>
+  </footer>
+
+</div>
+</body>
+</html>
